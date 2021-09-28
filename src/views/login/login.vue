@@ -25,8 +25,10 @@
 import { defineComponent, reactive, toRefs } from "vue";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
+// import router from "@/router";
 import { useStore } from "vuex";
 import { setToken } from "@/utils/auto";
+// import routeMenu from "@/api/menu";
 export default defineComponent({
   setup() {
     const store = useStore();
@@ -44,6 +46,7 @@ export default defineComponent({
             setToken(res.token);
             store.state.user.token = res.token;
             ElMessage.success("登录成功");
+            // router.addRoute(route: routeMenu[0]): () => void;
             router.push("/");
           }
         });

@@ -5,10 +5,6 @@ import { RouteLocationNormalized } from "vue-router";
 import { useStore } from "./store/index";
 NProgress.configure({ showSpinner: false });
 
-async function hello(): Promise<string> {
-  return "hello1";
-}
-
 router.beforeEach(
   // eslint-disable-next-line space-before-function-paren
   async (

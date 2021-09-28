@@ -7,7 +7,7 @@
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :uniqueOpened="true"
-        :default-active="menu[0].id"
+        :default-active="menu[0].menusub[0].id"
         class="el-menu-vertical-demo"
         :collapse="!isCollapse"
         background-color="#545c64"
@@ -35,44 +35,14 @@
 import { defineComponent, reactive, toRefs, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
+import routerMenu from "@/api/menu";
 export default defineComponent({
   setup() {
     const store = useStore();
     const route = useRoute();
 
     const setData = reactive({
-      menu: [
-        {
-          title: "导航一",
-          id: "1",
-          icon: "el-icon-s-shop",
-          menusub: [
-            {
-              title: "分组一",
-              id: "1-1",
-            },
-            {
-              title: "分组二",
-              id: "1-2",
-            },
-          ],
-        },
-        {
-          title: "导航一",
-          id: "2",
-          icon: "el-icon-s-release",
-          menusub: [
-            {
-              title: "分组一",
-              id: "2-1",
-            },
-            {
-              title: "分组二",
-              id: "2-2",
-            },
-          ],
-        },
-      ],
+      menu: routerMenu,
       isCollapse: computed(() => {
         console.log("1111", route);
         return store.state.setting.showSidebar;
